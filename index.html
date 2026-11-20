@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="THREAD THEORY by Khushboo — Premium Luxury Indian Fashion, Curated Kaftans, Farshi Sets, and Contemporary Co-ords.">
+  <title>THREAD THEORY by Khushboo — Premium Luxury Fashion</title>
+
+  <!-- Google Fonts: Cormorant Garamond & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Tenor+Sans&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles/main.css">
+
+  <!-- Preload Hero Images for Instant Seamless Transition -->
+  <link rel="preload" as="image" href="assets/main laptop.png" media="(min-width: 769px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/main mobile.png" media="(max-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/main laptop 2.png" media="(min-width: 769px)">
+  <link rel="preload" as="image" href="assets/main mobile 2.png" media="(max-width: 768px)">
+</head>
+<body>
+
+  <!-- =========================================================================
+       SECTION A: TOP ANNOUNCEMENT BAR
+       ========================================================================= -->
+  <aside class="announcement-bar" role="region" aria-label="Announcement">
+    <div class="announcement-inner">
+      <button class="announcement-arrow" onclick="prevAnnouncement()" aria-label="Previous announcement">&#10094;</button>
+      <span class="announcement-text" id="announcementText">COMPLIMENTARY DELIVERY ON ORDERS OVER ₹5,000</span>
+      <button class="announcement-arrow" onclick="nextAnnouncement()" aria-label="Next announcement">&#10095;</button>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       SECTION B: SECONDARY UTILITY BAR
+       ========================================================================= -->
+  <div class="utility-bar">
+    <div class="container utility-inner">
+      <div class="utility-links">
+        <span class="utility-link" onclick="openSizeGuide()">Size Guide</span>
+        <span class="utility-link" onclick="openProductModal('tt-01')">Delivery &amp; Returns</span>
+        <span class="utility-link" onclick="alert('For customer assistance, contact atelier@threadtheory.com or WhatsApp +91 98200 12345')">FAQ</span>
+      </div>
+      <div class="utility-right">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="instagram-icon-link" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <div class="currency-selector-wrapper">
+          <select class="currency-select" id="currencySelector" onchange="handleCurrencyChange(this.value)" aria-label="Select currency">
+            <option value="INR" selected>India | INR ₹</option>
+            <option value="USD">USA | USD $</option>
+            <option value="GBP">UK | GBP £</option>
+            <option value="EUR">Europe | EUR €</option>
+          </select>
+          <span class="currency-arrow">&#9662;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SECTION C: MAIN NAVIGATION HEADER
+       ========================================================================= -->
+  <header class="main-header">
+    <div class="container header-inner">
+      
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+      </button>
+
+      <!-- Desktop Search -->
+      <div class="header-search">
+        <div class="search-input-wrapper">
+          <input type="text" class="header-search-input" placeholder="Search kurta sets, kaftans..." oninput="handleSearchInput(event)">
+          <button class="search-icon-btn" aria-label="Search">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Center: Navigation Links and Brand Typographic Logo -->
+      <div class="header-center">
+        <nav class="nav-links">
+          <div class="nav-item">
+            <a href="javascript:void(0)" class="nav-link" data-view="shop" onclick="navigateTo('shop', 'all')">
+              SHOP <span class="nav-arrow">&#9662;</span>
+            </a>
+            <div class="nav-dropdown">
+              <a href="javascript:void(0)" class="dropdown-link" onclick="navigateTo('shop', 'co-ord-sets')">Co-ord Sets</a>
+              <a href="javascript:void(0)" class="dropdown-link" onclick="navigateTo('shop', 'farshi')">Farshi Suits</a>
+              <a href="javascript:void(0)" class="dropdown-link" onclick="navigateTo('shop', 'kaftans')">Kaftans</a>
+              <a href="javascript:void(0)" class="dropdown-link" onclick="navigateTo('shop', 'summer-casuals')">Summer Casuals</a>
+            </div>
+          </div>
+          <div class="nav-item">
+            <a href="javascript:void(0)" class="nav-link" onclick="setCollectionTab('festive-edit'); navigateTo('home')">
+              EDITS <span class="nav-arrow">&#9662;</span>
+            </a>
+            <div class="nav-dropdown">
+              <a href="javascript:void(0)" class="dropdown-link" onclick="setCollectionTab('festive-edit'); navigateTo('home')">The Festive Edit</a>
+              <a href="javascript:void(0)" class="dropdown-link" onclick="setCollectionTab('new-in'); navigateTo('home')">New In</a>
+              <a href="javascript:void(0)" class="dropdown-link" onclick="setCollectionTab('the-collection'); navigateTo('home')">The Signature Collection</a>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Brand Typographic Logo -->
+        <a href="javascript:void(0)" class="brand-logo" onclick="navigateTo('home')">
+          <span class="logo-main">THREAD THEORY</span>
+          <span class="logo-sub">by Khushboo</span>
+        </a>
+
+        <nav class="nav-links">
+          <div class="nav-item">
+            <a href="javascript:void(0)" class="nav-link" onclick="setCollectionTab('new-in'); navigateTo('home')">NEW IN</a>
+          </div>
+          <div class="nav-item">
+            <a href="javascript:void(0)" class="nav-link" onclick="navigateTo('shop', 'all')">SALE</a>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Right Header Icons -->
+      <div class="header-right">
+        <!-- Wishlist -->
+        <button class="header-icon-btn" onclick="openWishlistDrawer()" aria-label="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="badge-count" id="wishlistBadgeCount" style="display: none;">0</span>
+        </button>
+
+        <!-- Account -->
+        <button class="header-icon-btn" onclick="alert('Welcome to THREAD THEORY by Khushboo Atelier. Sign-in enabled for registered patrons.')" aria-label="Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+
+        <!-- Shopping Bag -->
+        <button class="header-icon-btn" onclick="openCartDrawer()" aria-label="Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="badge-count" id="cartBadgeCount" style="display: none;">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MAIN CONTENT: HOME VIEW
+       ========================================================================= -->
+  <main id="homeView">
+
+    <!-- =======================================================================
+         SECTION D: MAIN HERO BANNER
+         Desktop: main laptop.png | Mobile: main mobile.png
+         ======================================================================= -->
+    <section class="hero-section" aria-label="Hero Banner">
+      <div class="hero-slider-container" id="heroSliderContainer">
+        <div class="hero-track" id="heroTrack">
+          <!-- Slide 1 -->
+          <div class="hero-slide active" data-slide-index="0">
+            <div class="hero-media-wrapper">
+              <picture class="hero-picture">
+                <!-- Mobile view uses main mobile.png -->
+                <source media="(max-width: 768px)" srcset="assets/main mobile.png">
+                <!-- Desktop/Laptop view uses main laptop.png -->
+                <img src="assets/main laptop.png" alt="THREAD THEORY by Khushboo — The Festive Edit" class="hero-img" fetchpriority="high">
+              </picture>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="hero-slide" data-slide-index="1">
+            <div class="hero-media-wrapper">
+              <picture class="hero-picture">
+                <!-- Mobile view uses main mobile 2.png -->
+                <source media="(max-width: 768px)" srcset="assets/main mobile 2.png">
+                <!-- Desktop/Laptop view uses main laptop 2.png -->
+                <img src="assets/main laptop 2.png" alt="THREAD THEORY by Khushboo — Signature Edit" class="hero-img" loading="eager">
+              </picture>
+            </div>
+          </div>
+
+          <!-- Slide 3 (Seamless Loop Clone of Slide 1) -->
+          <div class="hero-slide hero-slide-clone" data-slide-index="0" aria-hidden="true">
+            <div class="hero-media-wrapper">
+              <picture class="hero-picture">
+                <source media="(max-width: 768px)" srcset="assets/main mobile.png">
+                <img src="assets/main laptop.png" alt="" class="hero-img" loading="eager">
+              </picture>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reference slider capsule indicator (• • ||) -->
+        <div class="hero-controls" role="tablist" aria-label="Hero carousel controls">
+          <button class="hero-dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+          <button class="hero-dot" data-slide="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+          <button class="hero-pause-btn" id="heroPauseBtn" aria-label="Pause automatic slideshow" title="Pause">&#10074;&#10074;</button>
+        </div>
+      </div>
+
+      <!-- Marquee Ribbon below Hero -->
+      <div class="ticker-bar" aria-hidden="true">
+        <div class="ticker-track">
+          <div class="ticker-item"><span class="ticker-star">&#10022;</span> CUT IN OUR MUMBAI ATELIER</div>
+          <div class="ticker-item"><span class="ticker-star">&#10022;</span> HAND-WORKED EMBROIDERY</div>
+          <div class="ticker-item"><span class="ticker-star">&#10022;</span> FARSHI &middot; KAFTANS &middot; CO-ORD SETS</div>
+          <div class="ticker-item"><span class="ticker-star">&#10022;</span> THE FESTIVE EDIT</div>
+          <div class="ticker-item"><span class="ticker-star">&#10022;</span> CONTEMPORARY INDIAN SILHOUETTES</div>
+          <div class="ticker-item"><span class="ticker-star">&#10022;</span> EFFORTLESS LUXURY BY KHUSHBOO</div>
+          <div class="ticker-item"><span class="ticker-star">&#10022;</span> CUT IN OUR MUMBAI ATELIER</div>
+          <div class="ticker-item"><span class="ticker-star">&#10022;</span> HAND-WORKED EMBROIDERY</div>
+          <div class="ticker-item"><span class="ticker-star">&#10022;</span> FARSHI &middot; KAFTANS &middot; CO-ORD SETS</div>
+          <div class="ticker-item"><span class="ticker-star">&#10022;</span> THE FESTIVE EDIT</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION E: BRAND INTRODUCTION
+         ======================================================================= -->
+    <section class="brand-intro-section">
+      <div class="container">
+        <h2 class="brand-intro-slogan">cut to be worn, not just photographed.</h2>
+        <p class="brand-intro-body">
+          <strong>THREAD THEORY by Khushboo</strong> is a contemporary fashion label celebrating individuality, effortless elegance, and thoughtful design. Discover carefully curated styles that bring together modern silhouettes and timeless appeal.
+        </p>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION F: PRODUCT COLLECTION TABS
+         Tabs: New In, Festive Edit, The Collection
+         ======================================================================= -->
+    <section class="collection-tabs-section">
+      <div class="container">
+        
+        <div class="collection-header-row">
+          <div class="collection-tabs-nav">
+            <button class="tab-btn active" data-tab="new-in" onclick="setCollectionTab('new-in')">New In</button>
+            <button class="tab-btn" data-tab="festive-edit" onclick="setCollectionTab('festive-edit')">Festive Edit</button>
+            <button class="tab-btn" data-tab="the-collection" onclick="setCollectionTab('the-collection')">The Collection</button>
+          </div>
+          <div class="collection-nav-arrows">
+            <button class="carousel-arrow" onclick="alert('Browsing next silhouettes in collection')" aria-label="Previous items">&#10094;</button>
+            <button class="carousel-arrow" onclick="alert('Browsing next silhouettes in collection')" aria-label="Next items">&#10095;</button>
+          </div>
+        </div>
+
+        <!-- 4-Column Product Grid -->
+        <div class="products-grid" id="collectionProductsGrid">
+          <!-- Dynamically populated by renderCollectionProducts() -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION G: SHOP BY CATEGORY
+         4 Portrait Cards with Dark Chocolate Bottom Bar
+         ======================================================================= -->
+    <section class="category-section">
+      <div class="container">
+        <h2 class="section-title">Shop by category</h2>
+        <div class="category-grid" id="categoryGrid">
+          <!-- Dynamically populated by renderCategoryGrid() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION H: EDITORIAL PROMOTIONAL BANNERS
+         Side-by-side large editorial banners matching reference
+         ======================================================================= -->
+    <section class="editorial-banners-section">
+      <div class="container">
+        <div class="editorial-banners-grid">
+          
+          <!-- Banner 1: NEW IN -->
+          <div class="editorial-banner-card" onclick="setCollectionTab('new-in'); window.scrollTo({ top: 900, behavior: 'smooth' })">
+            <img src="assets/WhatsApp Image 2026-11-18 at 11.46.04 AM (1).jpeg" alt="New In Collection" class="editorial-banner-img">
+            <div class="editorial-banner-overlay"></div>
+            <div class="editorial-banner-content">
+              <span class="editorial-banner-tag">CURATED DESIGNS</span>
+              <h3 class="editorial-banner-title">NEW IN</h3>
+              <button class="editorial-banner-btn" onclick="event.stopPropagation(); navigateTo('shop', 'all')">SHOP NOW</button>
+            </div>
+          </div>
+
+          <!-- Banner 2: FESTIVE EDIT -->
+          <div class="editorial-banner-card" onclick="setCollectionTab('festive-edit'); window.scrollTo({ top: 900, behavior: 'smooth' })">
+            <img src="assets/WhatsApp Image 2026-11-18 at 11.46.04 AM.jpeg" alt="The Festive Edit" class="editorial-banner-img">
+            <div class="editorial-banner-overlay"></div>
+            <div class="editorial-banner-content">
+              <span class="editorial-banner-tag">OCCASION WEAR</span>
+              <h3 class="editorial-banner-title">FESTIVE EDIT</h3>
+              <button class="editorial-banner-btn solid" onclick="event.stopPropagation(); setCollectionTab('festive-edit'); window.scrollTo({ top: 900, behavior: 'smooth' })">SHOP NOW</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION I: BEST SELLERS & ATELIER STORY
+         ======================================================================= -->
+    <section class="collection-tabs-section" style="padding-top: 1rem;">
+      <div class="container">
+        <div class="collection-header-row">
+          <h2 class="section-title" style="margin-bottom: 0;">Best Sellers</h2>
+          <a href="javascript:void(0)" class="editorial-banner-btn" style="padding: 6px 16px; font-size: 0.72rem;" onclick="navigateTo('shop')">VIEW ALL</a>
+        </div>
+        <div class="products-grid" id="bestSellersGrid">
+          <!-- Dynamically populated by renderBestSellers() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Atelier Heritage Feature -->
+    <section class="atelier-story-section">
+      <div class="container atelier-grid">
+        <div class="atelier-image-stack">
+          <img src="assets/WhatsApp Image 2026-11-18 at 11.46.06 AM.jpeg" alt="Atelier Craftsmanship" class="atelier-img-main" loading="lazy">
+          <div class="atelier-badge-stamp">
+            <span class="atelier-stamp-num">100%</span>
+            <span>HAND CRAFTED</span>
+          </div>
+        </div>
+        <div class="atelier-text-block">
+          <span class="atelier-eyebrow">THE KHUSHBOO ATELIER</span>
+          <h2 class="atelier-title">Thoughtfully Conceived, Meticulously Handcrafted</h2>
+          <p class="atelier-paragraph">
+            At THREAD THEORY by Khushboo, every silhouette begins as an intentional study of fabric, drape, and movement. We reject fleeting trends in favor of enduring beauty, creating garments that transition effortlessly between grand celebrations and intimate evenings.
+          </p>
+          <p class="atelier-paragraph">
+            From our atelier in Mumbai, master needle-workers practice age-old embroidery traditions—Zardozi, Marodi, Resham, and Mukaish—reinterpreting heritage crafts for modern sensibilities.
+          </p>
+          <div class="atelier-features-list">
+            <div class="atelier-feature-item">
+              <span class="atelier-feature-dot"></span>
+              <span class="atelier-feature-text">Pure Natural Silk &amp; Chanderi Weaves</span>
+            </div>
+            <div class="atelier-feature-item">
+              <span class="atelier-feature-dot"></span>
+              <span class="atelier-feature-text">Hand-Finished Seams &amp; Linings</span>
+            </div>
+            <div class="atelier-feature-item">
+              <span class="atelier-feature-dot"></span>
+              <span class="atelier-feature-text">Bespoke Made-to-Measure Options</span>
+            </div>
+            <div class="atelier-feature-item">
+              <span class="atelier-feature-dot"></span>
+              <span class="atelier-feature-text">Zero Compromise on Drape &amp; Fit</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       SHOP CATALOG VIEW (Triggered on 'SHOP' click or Category filter)
+       ========================================================================= -->
+  <section class="shop-view-container" id="shopView">
+    <div class="container">
+      <div class="shop-header-banner">
+        <span class="atelier-eyebrow">THE BOUTIQUE CURATION</span>
+        <h1 class="atelier-title" style="margin-bottom: 0.5rem;">The Complete Collection</h1>
+        <p class="atelier-paragraph" style="max-width: 600px; margin: 0 auto;">Discover artisanal Indian craftsmanship and modern silhouettes curated by Khushboo.</p>
+      </div>
+
+      <div class="shop-filter-bar">
+        <div class="category-pills">
+          <button class="category-pill active" data-slug="all" onclick="setShopFilter('all')">All Styles</button>
+          <button class="category-pill" data-slug="co-ord-sets" onclick="setShopFilter('co-ord-sets')">Co-ord Sets</button>
+          <button class="category-pill" data-slug="farshi" onclick="setShopFilter('farshi')">Farshi</button>
+          <button class="category-pill" data-slug="kaftans" onclick="setShopFilter('kaftans')">Kaftans</button>
+          <button class="category-pill" data-slug="summer-casuals" onclick="setShopFilter('summer-casuals')">Summer Casuals</button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <span style="font-size: 0.78rem; color: var(--color-taupe);" id="shopProductCount">16 Designs</span>
+          <select class="sort-select" onchange="handleShopSort(this.value)">
+            <option value="featured">Featured Curations</option>
+            <option value="newest">Newest Arrivals</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="products-grid" id="shopProductsGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION J: LUXURY FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        
+        <!-- Brand Info -->
+        <div class="footer-brand-col">
+          <span class="footer-logo-main">THREAD THEORY</span>
+          <span class="footer-logo-sub">by Khushboo</span>
+          <p class="footer-bio">
+            A boutique luxury fashion label redefining contemporary Indian wear. Rooted in artisanal craftsmanship, architectural silhouettes, and effortless elegance.
+          </p>
+          <div class="footer-social-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="mailto:atelier@threadtheory.com" class="footer-social-link" aria-label="Email">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Boutique Collections -->
+        <div>
+          <h4 class="footer-heading">Collections</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="javascript:void(0)" onclick="setCollectionTab('new-in'); navigateTo('home')">New In</a></li>
+            <li class="footer-link-item"><a href="javascript:void(0)" onclick="setCollectionTab('festive-edit'); navigateTo('home')">The Festive Edit</a></li>
+            <li class="footer-link-item"><a href="javascript:void(0)" onclick="filterByCategory('co-ord-sets')">Co-ord Sets</a></li>
+            <li class="footer-link-item"><a href="javascript:void(0)" onclick="filterByCategory('farshi')">Farshi Ensembles</a></li>
+            <li class="footer-link-item"><a href="javascript:void(0)" onclick="filterByCategory('kaftans')">Luxury Kaftans</a></li>
+          </ul>
+        </div>
+
+        <!-- Client Care -->
+        <div>
+          <h4 class="footer-heading">Client Care</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="javascript:void(0)" onclick="openSizeGuide()">Size &amp; Fit Guide</a></li>
+            <li class="footer-link-item"><a href="javascript:void(0)" onclick="alert('Shipping Policy: Complimentary insured express delivery across India on all orders over ₹5,000. Orders dispatch within 2-4 business days.')">Shipping Policy</a></li>
+            <li class="footer-link-item"><a href="javascript:void(0)" onclick="alert('Exchange Policy: We gladly facilitate size exchanges within 7 days of order receipt in unworn condition.')">Returns &amp; Exchanges</a></li>
+            <li class="footer-link-item"><a href="javascript:void(0)" onclick="alert('Privacy Policy: THREAD THEORY adheres strictly to customer privacy protection standards.')">Privacy Policy</a></li>
+            <li class="footer-link-item"><a href="javascript:void(0)" onclick="alert('Terms: All designs and patterns are the intellectual creation of THREAD THEORY by Khushboo.')">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <h4 class="footer-heading">Atelier Dispatch</h4>
+          <p class="newsletter-desc">
+            Subscribe to receive private salon preview invitations, festive launch alerts, and artisanal stories.
+          </p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Thank you for joining our private salon dispatch.'); this.reset();">
+            <div class="newsletter-input-wrap">
+              <input type="email" class="newsletter-input" placeholder="Your email address" required>
+            </div>
+            <button type="submit" class="newsletter-btn">SUBSCRIBE</button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <span>&copy; 2026 THREAD THEORY by Khushboo. All Rights Reserved.</span>
+        <div class="payment-methods-row">
+          <span class="payment-badge">UPI</span>
+          <span class="payment-badge">VISA</span>
+          <span class="payment-badge">MASTERCARD</span>
+          <span class="payment-badge">RUPAY</span>
+          <span class="payment-badge">AMEX</span>
+          <span class="payment-badge">NET BANKING</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MODALS & DRAWERS
+       ========================================================================= -->
+
+  <!-- Drawer Backdrop -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+  <!-- Slide-Out Shopping Bag Drawer -->
+  <div class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Shopping Bag">
+    <div class="drawer-header">
+      <h2 class="drawer-title">Shopping Bag</h2>
+      <button class="drawer-close-btn" onclick="closeCartDrawer()" aria-label="Close bag">&times;</button>
+    </div>
+    
+    <!-- Free Shipping Progress -->
+    <div class="free-shipping-bar">
+      <div class="shipping-progress-text" id="shippingProgressText">Complimentary delivery on orders over ₹5,000</div>
+      <div class="shipping-progress-track">
+        <div class="shipping-progress-fill" id="shippingProgressFill"></div>
+      </div>
+    </div>
+
+    <!-- Line items list -->
+    <div class="drawer-body" id="cartDrawerBody">
+      <!-- Injected by renderCartDrawer() -->
+    </div>
+
+    <!-- Drawer Footer -->
+    <div class="drawer-footer">
+      <div class="drawer-subtotal-row">
+        <span>Subtotal</span>
+        <span id="cartSubtotalAmount">₹0</span>
+      </div>
+      <p class="drawer-tax-note">Taxes included. Shipping calculated at checkout.</p>
+      <button class="checkout-btn" onclick="openCheckout()">PROCEED TO CHECKOUT</button>
+    </div>
+  </div>
+
+  <!-- Slide-Out Wishlist Drawer -->
+  <div class="cart-drawer" id="wishlistDrawer" role="dialog" aria-modal="true" aria-label="Saved Silhouettes">
+    <div class="drawer-header">
+      <h2 class="drawer-title">Saved Silhouettes</h2>
+      <button class="drawer-close-btn" onclick="closeWishlistDrawer()" aria-label="Close wishlist">&times;</button>
+    </div>
+    <div class="drawer-body" id="wishlistItemsContainer">
+      <!-- Injected by openWishlistDrawer() -->
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true">
+    <div class="mobile-nav-header">
+      <span class="logo-main" style="font-size: 1.3rem;">THREAD THEORY</span>
+      <button class="drawer-close-btn" onclick="toggleMobileMenu()">&times;</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="javascript:void(0)" class="mobile-nav-link" onclick="navigateTo('home'); toggleMobileMenu();">HOME</a>
+      <a href="javascript:void(0)" class="mobile-nav-link" onclick="navigateTo('shop', 'all'); toggleMobileMenu();">ALL DESIGNS</a>
+      <a href="javascript:void(0)" class="mobile-nav-link" onclick="filterByCategory('co-ord-sets'); toggleMobileMenu();">CO-ORD SETS</a>
+      <a href="javascript:void(0)" class="mobile-nav-link" onclick="filterByCategory('farshi'); toggleMobileMenu();">FARSHI SUITS</a>
+      <a href="javascript:void(0)" class="mobile-nav-link" onclick="filterByCategory('kaftans'); toggleMobileMenu();">KAFTANS</a>
+      <a href="javascript:void(0)" class="mobile-nav-link" onclick="filterByCategory('summer-casuals'); toggleMobileMenu();">SUMMER CASUALS</a>
+      <a href="javascript:void(0)" class="mobile-nav-link" onclick="setCollectionTab('festive-edit'); navigateTo('home'); toggleMobileMenu();">FESTIVE EDIT</a>
+      <a href="javascript:void(0)" class="mobile-nav-link" onclick="openSizeGuide(); toggleMobileMenu();">SIZE GUIDE</a>
+    </div>
+  </div>
+
+  <!-- Product Detail & Quick View Modal -->
+  <div class="modal-backdrop" id="productModal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeProductModal()" aria-label="Close dialog">&times;</button>
+      <div id="productModalContent">
+        <!-- Injected by openProductModal() -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Size Chart Modal -->
+  <div class="modal-backdrop" id="sizeGuideModal" role="dialog" aria-modal="true">
+    <div class="modal-dialog size-modal-dialog">
+      <button class="modal-close-btn" onclick="closeSizeGuide()">&times;</button>
+      <span class="atelier-eyebrow">TAILORING REFERENCE</span>
+      <h2 class="atelier-title" style="font-size: 1.8rem; margin-bottom: 0.5rem;">Atelier Size Guide</h2>
+      <p style="font-size: 0.8rem; color: var(--color-chocolate); opacity: 0.85;">
+        All measurements are garment dimensions in inches. For a relaxed fit, our silhouettes allow 2-3 inches of ease.
+      </p>
+      <table class="size-table">
+        <thead>
+          <tr>
+            <th>Size</th>
+            <th>Bust</th>
+            <th>Waist</th>
+            <th>Hip</th>
+            <th>Kurta Length</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>XS</strong></td>
+            <td>34"</td>
+            <td>28"</td>
+            <td>38"</td>
+            <td>46"</td>
+          </tr>
+          <tr>
+            <td><strong>S</strong></td>
+            <td>36"</td>
+            <td>30"</td>
+            <td>40"</td>
+            <td>46"</td>
+          </tr>
+          <tr>
+            <td><strong>M</strong></td>
+            <td>38"</td>
+            <td>32"</td>
+            <td>42"</td>
+            <td>47"</td>
+          </tr>
+          <tr>
+            <td><strong>L</strong></td>
+            <td>40"</td>
+            <td>34"</td>
+            <td>44"</td>
+            <td>47"</td>
+          </tr>
+          <tr>
+            <td><strong>XL</strong></td>
+            <td>42"</td>
+            <td>36"</td>
+            <td>46"</td>
+            <td>48"</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size: 0.75rem; margin-top: 1.2rem; color: var(--color-taupe); text-align: center;">
+        Need bespoke made-to-measure tailoring? Contact our atelier concierge via WhatsApp.
+      </p>
+    </div>
+  </div>
+
+  <!-- Checkout Flow Modal -->
+  <div class="modal-backdrop" id="checkoutModal" role="dialog" aria-modal="true">
+    <div class="modal-dialog checkout-dialog">
+      <button class="modal-close-btn" onclick="closeCheckout()">&times;</button>
+      
+      <!-- Checkout Step 1: Form & Payment -->
+      <div id="checkoutStep1">
+        <div class="checkout-steps">
+          <span class="checkout-step active">1. Delivery</span>
+          <span class="checkout-step active">2. Payment</span>
+          <span class="checkout-step">3. Review</span>
+        </div>
+
+        <form onsubmit="completeCheckoutOrder(event)">
+          <span class="atelier-eyebrow">PATRON DETAILS &amp; SHIPPING ADDRESS</span>
+          <div class="form-grid" style="margin-top: 0.8rem;">
+            <input type="text" class="checkout-input" placeholder="Full Name" required>
+            <input type="email" class="checkout-input" placeholder="Email Address" required>
+            <input type="tel" class="checkout-input" placeholder="Contact Mobile (+91)" required>
+            <input type="text" class="checkout-input" placeholder="Pincode / Postal Code" required>
+            <input type="text" class="checkout-input form-group-full" placeholder="Street Address, Apartment, Suite" required>
+            <input type="text" class="checkout-input" placeholder="City" required>
+            <input type="text" class="checkout-input" placeholder="State" required>
+          </div>
+
+          <span class="atelier-eyebrow">SELECT PAYMENT METHOD</span>
+          <div class="payment-options-grid" style="margin-top: 0.8rem;">
+            <label class="payment-option-card active">
+              <input type="radio" name="paymentMethod" value="upi" checked>
+              <span style="font-size: 0.82rem; font-weight: 500;">Instant UPI / QR Code</span>
+            </label>
+            <label class="payment-option-card">
+              <input type="radio" name="paymentMethod" value="card">
+              <span style="font-size: 0.82rem; font-weight: 500;">Credit / Debit Card</span>
+            </label>
+            <label class="payment-option-card">
+              <input type="radio" name="paymentMethod" value="netbanking">
+              <span style="font-size: 0.82rem; font-weight: 500;">Net Banking (50+ Banks)</span>
+            </label>
+            <label class="payment-option-card">
+              <input type="radio" name="paymentMethod" value="cod">
+              <span style="font-size: 0.82rem; font-weight: 500;">Cash on Delivery (Verified)</span>
+            </label>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding: 1rem 0; border-top: 1px solid var(--color-border);">
+            <span style="font-size: 1rem; font-weight: 600; color: var(--color-chocolate);">Total Payable Amount:</span>
+            <span style="font-size: 1.3rem; font-weight: 600; color: var(--color-chocolate);" id="checkoutOrderTotal">₹0</span>
+          </div>
+
+          <button type="submit" class="checkout-btn">PLACE ORDER &amp; CONFIRM ATELIER DISPATCH</button>
+        </form>
+      </div>
+
+      <!-- Checkout Step: Confirmation Success -->
+      <div id="checkoutStepSuccess" class="order-success-view" style="display: none;">
+        <div class="success-icon-badge">&#10003;</div>
+        <span class="atelier-eyebrow">ORDER CONFIRMED</span>
+        <h2 class="atelier-title" style="margin-bottom: 0.5rem;">Thank You for Your Order</h2>
+        <p class="atelier-paragraph" style="max-width: 500px; margin: 0 auto 1.5rem;">
+          Your order <strong>#<span id="confirmedOrderNumber">TT-984210</span></strong> has been received by our Mumbai atelier. A confirmation dispatch message has been sent to your email.
+        </p>
+        <button class="editorial-banner-btn solid" onclick="closeCheckout(); navigateTo('home')">RETURN TO ATELIER</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
